@@ -1,7 +1,8 @@
 
 table {
   width: 1000px;
-  border: 1px solid black;
+  height: 250px;
+  border: 2px solid slateblue;
   border-collapse: collapse;
   margin: 0 auto;
 } 
@@ -9,12 +10,40 @@ table {
   background-color: rgb(205, 205, 205);
 }
 tr {
-  border: 1px solid black;
+  border: 2px solid slateblue;
   margin: 5px;
 } td {
   text-align: center;
 }
 
+.mainBtn {
+  text-align: center;
+}
+.main:hover {
+  background-color:gray;
+}
+.addBtn {
+  font-size: 20px;
+  color: white;
+  background-color: cornflowerblue;
+  
+  width: 495px;
+  height: 40px;
+  margin: 5px;
+  border-radius:10px;
+  border-color: slateblue;
+}
+.apptestBtn {
+  font-size: 20px;
+  color: white;
+  background-color: darkseagreen;
+  
+  width: 495px;
+  height: 40px;
+  margin: 5px;
+  border-radius:10px;
+  border-color: slateblue;
+}
 
 .actionBtn {
   padding: 0px 7px;
