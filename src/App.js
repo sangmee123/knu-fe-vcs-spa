@@ -25,8 +25,8 @@ function App() {
   return (
     <div className="App">
       <div className="mainBtn">
-        <button className="mainBtn">ADD</button>
-        <button className="mainBtn">App Test</button>
+        <button className="main addBtn">ADD</button>
+        <button className="main apptestBtn">App Test</button>
       </div>
       
       <table>
