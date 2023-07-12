@@ -14,6 +14,18 @@ function AppTestButton() {
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
+    const SelectBox = () => {
+        return (
+            <select>
+                <option key="idx1" value="idx1">
+                    1-ios-1.0
+                </option>
+                <option key="idx2" value="idx2">2-android-1.0</option>
+                <option key="idx3" value="idx3">3-android-1.5</option>
+            </select>
+        );
+    };
+
     return(
         <div>
             <button className="apptestBtn" variant="outline-primary" onClick={handleShow}>App Test</button>
@@ -22,9 +34,12 @@ function AppTestButton() {
                 <Modal.Header>
                     <Modal.Title>Client Ver</Modal.Title>
                 </Modal.Header>
-                <Modal.Body>Server Result</Modal.Body>
+                <SelectBox />
+                <Modal.Header>
+                <Modal.Title>Server Result</Modal.Title>
+                </Modal.Header>
                 <Modal.Footer>
-                    <Button className="btn_close" variant="secondary" onClick={handleClose}>
+                    <Button className="closeBtn" variant="secondary" onClick={handleClose}>
                         확인
                     </Button>
                 </Modal.Footer>

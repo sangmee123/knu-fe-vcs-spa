@@ -12,7 +12,6 @@ table {
 tr {
   border: 2px solid slateblue;
   margin: 5px;
-} td {
   text-align: center;
 }
 tr:nth-child(2n+1) {
@@ -26,6 +25,8 @@ tr:nth-child(2n) {
 .mainBtn {
   text-align: center;
   display: flex;
+  width: 1000px;
+  margin: 0 auto;
 }
 .addBtn {
   font-size: 20px;
@@ -49,6 +50,7 @@ tr:nth-child(2n) {
   width: 495px;
   height: 40px;
   margin: 5px;
+  margin-left: auto;
   border-radius:10px;
   border-color: steelblue;
 }
