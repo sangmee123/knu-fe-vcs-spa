@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import '../styles/AddButton.css';
+
+import '../styles/CommonPopup.css';
 
 function AddButton() {
 
@@ -23,7 +24,8 @@ function AddButton() {
 
     const SelectUpdatetype = () => {
         return (
-            <select>
+            <select>                
+                <option value="none" hidden></option>
                 <option key="idx1" value="idx1">true</option>
                 <option key="idx2" value="idx2">false</option>
             </select>
@@ -33,20 +35,18 @@ function AddButton() {
     return(
         <div>
             <button className="addBtn" variant="outline-primary" onClick={handleShow}>ADD</button>
-
             <Modal show={show} onHide={handleClose}>
                     <Modal.Header></Modal.Header>
-                    <div className='inputBox'>
+                    <form className='inputBox'>
                         <SelectOs />
-                        <input></input>
+                        <input class="textBox"></input>
                         <SelectUpdatetype />
-                        <input id="msg"></input>
-                    </div>
+                        <textarea class="textBox" id="msg"></textarea>
+                    </form>
                     <Modal.Footer>
                         <Button className="closeBtn" variant="secondary" onClick={handleClose}>취소</Button>
-                        <Button className="closeBtn" variant="secondary" onClick={handleClose}>확인</Button>
+                        <Button type="submit" className="closeBtn" variant="secondary" onClick={handleClose}>확인</Button>
                     </Modal.Footer>
-               
             </Modal>
         </div>
     )

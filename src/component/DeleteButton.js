@@ -5,6 +5,7 @@ import Modal from 'react-bootstrap/Modal';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 
+import '../styles/CommonPopup.css'; 
 import '../styles/ActionButton.css';
 
 function DeleteButton() {
@@ -14,20 +15,22 @@ function DeleteButton() {
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
-    const SelectBox = () => {
+    const SelectOs = () => {
         return (
             <select>
-                <option key="ios" value="ios">ios</option>
-                <option key="android" value="android">android</option>
+                <option value="none" hidden></option>
+                <option key="os" value="android">android</option>
+                <option key="os" value="ios">ios</option>
             </select>
         );
     };
 
-    const SelectBox2 = () => {
+    const SelectUpdatetype = () => {
         return (
             <select>
-                <option key="true" value="true">true</option>
-                <option key="true" value="false">false</option>
+                <option value="none" hidden></option>
+                <option key="idx1" value="true">true</option>
+                <option key="idx2" value="false">false</option>
             </select>
         );
     };
@@ -35,16 +38,18 @@ function DeleteButton() {
     return(
         <>
             <button className="actionBtn" id="deleteBtn" variant="outline-primary" onClick={handleShow}>삭제</button>
-
             <Modal show={show} onHide={handleClose}>
-                <SelectBox />
-                <input></input>
-                <SelectBox2 />
-                <input></input>
-                <Modal.Footer>
-                    <Button className="cancelBtn" variant="secondary" onClick={handleClose}>취소</Button>
-                    <Button className="closeBtn" variant="secondary" onClick={handleClose}>삭제</Button>
-                </Modal.Footer>
+                    <Modal.Header></Modal.Header>
+                    <form className='inputBox'>
+                        <SelectOs />
+                        <input class="textBox"></input>
+                        <SelectUpdatetype />
+                        <textarea class="textBox" id="msg"></textarea>
+                    </form>
+                    <Modal.Footer>
+                        <Button className="closeBtn" variant="secondary" onClick={handleClose}>취소</Button>
+                        <Button type="submit" variant="secondary" onClick={handleClose} className="closeBtn" id="del">삭제</Button>
+                    </Modal.Footer>
             </Modal>
         </>
     )

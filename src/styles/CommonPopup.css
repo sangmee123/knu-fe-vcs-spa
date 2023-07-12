@@ -14,7 +14,7 @@
     margin: 0 auto;
 }
 
-/* 입력란 */
+/* 팝업창 입력란 */
 select {
     width: 100%;
     text-align: center;
@@ -23,7 +23,7 @@ select {
     padding: 5px;
     margin: 10px 0px 10px 0px;
 }
-input {
+.textBox {
     width: 100%;
     text-align: center;
     font-size: 17px;
@@ -32,12 +32,12 @@ input {
 }
 #msg {
     overflow-y: auto;
-    height: 80px;
+    height: 70px;
     font-size: 13px;
     font-weight: bolder; 
-    padding: 20px;
 }
 
+/* 팝업창 닫기 버튼 */
 .closeBtn {
     background-color: rgb(19, 167, 19);
     color: black;
@@ -45,3 +45,4 @@ input {
     border-color: rgb(71, 99, 175);
     margin-right: 25px;
 }
+#del { background-color: red; }
