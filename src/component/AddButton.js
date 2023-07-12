@@ -5,7 +5,7 @@ import Modal from 'react-bootstrap/Modal';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-import './styles/AppTestButton.css';
+import './styles/AddButton.css';
 
 function AppTestButton() {
 
@@ -43,4 +43,4 @@ function AppTestButton() {
         </div>
     )
 }
-export default AppTestButton;
+export default AddButton;

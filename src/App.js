@@ -1,91 +1,24 @@
 import logo from './logo.svg';
 import './App.css';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import axios from 'axios';
 import AppTestButton from './AppTestButton';
 
 function App() {
-  let list = [
-    {
-      id: "1",
-      os: "ios", 
-      ver: "1.0", 
-      updateType: "true", 
-      message: "null", 
-      packageInfo: "com.test.myapp", 
-      regdate: "2023/05/05 12:00:00"
-    },
-    {
-      id: "2",
-      os: "ios", 
-      ver: "1.0", 
-      updateType: "true", 
-      message: "null", 
-      packageInfo: "com.test.myapp", 
-      regdate: "2023/05/05 12:00:00"
-    }, 
-    {
-      id: "3",
-      os: "android", 
-      ver: "1.5", 
-      updateType: "false", 
-      message: "서비스 A가 업데이트 되었습니다.", 
-      packageInfo: "com.test.myapp", 
-      regdate: "2023/05/05 12:00:00"
-    }, 
-    {
-      id: "4",
-      os: "android", 
-      ver: "1.5", 
-      updateType: "false", 
-      message: "서비스 A가 업데이트 되었습니다.", 
-      packageInfo: "com.test.myapp", 
-      regdate: "2023/05/05 12:00:00"
-    }, 
-    {
-      id: "5",
-      os: "ios", 
-      ver: "2.0", 
-      updateType: "true", 
-      message: "신규서비스 출시 앱을 업데이트...", 
-      packageInfo: "com.test.myapp", 
-      regdate: "2023/05/05 12:00:00"
-    }
-  ];
-  const [data, setData]= useState(list);
+  const [data, setData]= useState('');
 
   // ajax, jquery 형태의 서버 통신 
-  // let arr = [];
-  // function getConfigData() {
-  //   axios
-  //   .get('http://localhost:8080/vercontrol/getConfigAll')
-  //   .then(function (resonse) {
-  //     // 성공한 경우 실행
-  //     let data = resonse;
-  //     console.log(data);
-  //     for(let i = 0; i < data.length; i++) {
-  //       arr.push(
-  //         <tr className="list">
-  //           <td>{data[i].id}</td><td>{data[i].os}</td><td>{data[i].ver}</td><td>{data[i].updateType}</td>
-  //           <td>{data[i].message}</td><td>{data[i].packageInfo}</td><td>{data[i].regdate}</td>
-  //           <td>
-  //             <button className="actionBtn" id="testBtn">Test</button>
-  //             <button className="actionBtn" id="updateBtn">수정</button>
-  //             <button className="actionBtn" id="deleteBtn">삭제</button>
-  //           </td>
-  //         </tr>
-  //       )
-  //     }
-  //     return arr;
-  //   })
-  //   .catch(function (error) {
-  //     // 에러인 경우 실행
-  //     console.log(error);
-  //   })
-  //   .then(function () {
-  //     // 항상 실행
-  //   });
-  // }
+  useEffect(() => {
+    const getConfigData = async () => {
+        try {
+          const response = await axios.get('');
+          setData(response.data);
+        } catch(e) {
+          console.log(e);
+        }
+    };
+    getConfigData();
+  }, []); 
 
   function versionList(data) {
     let arr = [];
@@ -111,7 +44,6 @@ function App() {
       <div className="mainBtn">
         <button className="addBtn">ADD</button>
         <AppTestButton />
-        {/*<button className="apptestBtn">App Test</button>*/}
       </div>
       
       <table>
@@ -120,7 +52,7 @@ function App() {
           <th>message</th><th>package</th><th>regdate</th><th>action</th>
         </tr>
         {versionList(data)}
-        {/* {getConfigData()} */}
+ 
       </table>
     </div>
   );
