@@ -25,6 +25,7 @@ tr:nth-child(2n) {
 /* mainBtn Start */
 .mainBtn {
   text-align: center;
+  display: flex;
 }
 .addBtn {
   font-size: 20px;

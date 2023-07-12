@@ -1,0 +1,14 @@
+.apptestBtn {
+    font-size: 20px;
+    color: white;
+    background-color: mediumseagreen;
+    
+    width: 495px;
+    height: 40px;
+    margin: 5px;
+    border-radius:10px;
+    border-color: steelblue;
+  }
+  .apptestBtn:hover {
+    background-color: seagreen;
+  }

@@ -1,6 +1,8 @@
 import logo from './logo.svg';
 import './App.css';
 import { useState } from 'react';
+import AppTestButton from './AppTestButton';
+
 function App() {
   const [data, setData]= useState([
     {
@@ -73,7 +75,8 @@ function App() {
     <div className="App">
       <div className="mainBtn">
         <button className="addBtn">ADD</button>
-        <button className="apptestBtn">App Test</button>
+        <AppTestButton />
+        {/*<button className="apptestBtn">App Test</button>*/}
       </div>
       
       <table>
