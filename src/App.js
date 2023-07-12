@@ -6,6 +6,7 @@ import AppTestButton from './component/AppTestButton';
 import TestButton from './component/TestButton';
 import UpdateButton from './component/UpdateButton';
 import DeleteButton from './component/DeleteButton';
+import AddButton from './component/AddButton';
 
 function App() {
   const [data, setData]= useState('');
@@ -14,7 +15,7 @@ function App() {
   useEffect(() => {
     const getConfigData = async () => {
         try {
-          const response = await axios.get('');
+          const response = await axios.get('http://localhost:8080/vercontrol/getConfigAll');
           setData(response.data);
         } catch(e) {
           console.log(e);
@@ -45,7 +46,7 @@ function App() {
   return (
     <div className="App">
       <div className="mainBtn">
-        <button className="addBtn">ADD</button>
+        <AddButton />
         <AppTestButton />
       </div>
       
