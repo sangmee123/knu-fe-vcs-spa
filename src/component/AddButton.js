@@ -7,7 +7,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 import './styles/AddButton.css';
 
-function AppTestButton() {
+function AddButton() {
 
     const [show, setShow] = useState(false);
 

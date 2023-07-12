@@ -2,7 +2,10 @@ import logo from './logo.svg';
 import './App.css';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-import AppTestButton from './AppTestButton';
+import AppTestButton from './component/AppTestButton';
+import TestButton from './component/TestButton';
+import UpdateButton from './component/UpdateButton';
+import DeleteButton from './component/DeleteButton';
 
 function App() {
   const [data, setData]= useState('');
@@ -28,10 +31,10 @@ function App() {
         <tr className="list">
           <td>{data[i].id}</td><td>{data[i].os}</td><td>{data[i].ver}</td><td>{data[i].updateType}</td>
           <td>{data[i].message}</td><td>{data[i].package}</td><td>{data[i].regdate}</td>
-          <td>
-            <button className="actionBtn" id="testBtn">Test</button>
-            <button className="actionBtn" id="updateBtn">수정</button>
-            <button className="actionBtn" id="deleteBtn">삭제</button>
+          <td className="btnList">
+            <TestButton />
+            <UpdateButton />
+            <DeleteButton />
           </td>
         </tr>
       )

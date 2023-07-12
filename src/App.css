@@ -42,45 +42,4 @@ tr:nth-child(2n) {
 .addBtn:hover {
   background-color: steelblue;
 }
-.apptestBtn {
-  font-size: 20px;
-  color: white;
-  background-color: mediumseagreen;
-  
-  width: 495px;
-  height: 40px;
-  margin: 5px;
-  margin-left: auto;
-  border-radius:10px;
-  border-color: steelblue;
-}
-.apptestBtn:hover {
-  background-color: seagreen;
-}
 /* mainBtn End */
-
-.actionBtn {
-  padding: 0px 7px;
-  margin-right: 10px;
-  border: 1px solid slateblue;
-  border-radius: 4px; 
-}
-#testBtn {
-  background-color: yellow;
-  padding-top: 2.5px;
-}
-#testBtn:hover {
-  background-color: gold;
-}
-#updateBtn {
-  background-color: rgb(30, 172, 30);
-}
-#updateBtn:hover {
-  background-color: Forestgreen;
-}
-#deleteBtn {
-  background-color: red;
-}
-#deleteBtn:hover {
-  background-color: Firebrick;
-}

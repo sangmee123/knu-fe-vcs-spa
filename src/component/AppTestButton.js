@@ -5,7 +5,7 @@ import Modal from 'react-bootstrap/Modal';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-import './styles/AppTestButton.css';
+import '../styles/AppTestButton.css';
 
 function AppTestButton() {
 
