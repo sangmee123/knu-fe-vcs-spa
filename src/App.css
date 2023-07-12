@@ -3,7 +3,7 @@ table {
   height: 250px;
   border: 2px solid slateblue;
   border-collapse: collapse;
-  
+
   margin: 0 auto;
 } 
 #title {
@@ -11,6 +11,7 @@ table {
 }
 tr {
   border: 2px solid slateblue;
+  margin: 5px;
   text-align: center;
   margin: 5px;
 }
@@ -49,6 +50,7 @@ tr:nth-child(2n) {
   width: 495px;
   height: 40px;
   margin: 5px;
+  margin-left: auto;
   border-radius:10px;
   border-color: steelblue;
 }
