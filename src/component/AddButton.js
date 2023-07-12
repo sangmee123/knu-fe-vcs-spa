@@ -14,8 +14,9 @@ function AddButton() {
     const SelectOs = () => {
         return (
             <select>
-                <option key="idx1" value="idx1">android</option>
-                <option key="idx2" value="idx2">ios</option>
+                <option value="none" hidden></option>
+                <option key="os" value="android">android</option>
+                <option key="os" value="ios">ios</option>
             </select>
         );
     };
@@ -34,19 +35,18 @@ function AddButton() {
             <button className="addBtn" variant="outline-primary" onClick={handleShow}>ADD</button>
 
             <Modal show={show} onHide={handleClose}>
-                <Modal.Header></Modal.Header>
-
-                <SelectOs />
-                <input id="version"></input>
-                <SelectUpdatetype />
-                <input id="version"></input>
-
-                <Modal.Header></Modal.Header>
-                
-                <Modal.Footer>
-                    <Button className="closeBtn" variant="secondary" onClick={handleClose}>취소</Button>
-                    <Button className="closeBtn" variant="secondary" onClick={handleClose}>확인</Button>
-                </Modal.Footer>
+                    <Modal.Header></Modal.Header>
+                    <div className='inputBox'>
+                        <SelectOs />
+                        <input></input>
+                        <SelectUpdatetype />
+                        <input id="msg"></input>
+                    </div>
+                    <Modal.Footer>
+                        <Button className="closeBtn" variant="secondary" onClick={handleClose}>취소</Button>
+                        <Button className="closeBtn" variant="secondary" onClick={handleClose}>확인</Button>
+                    </Modal.Footer>
+               
             </Modal>
         </div>
     )
