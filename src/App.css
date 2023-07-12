@@ -3,6 +3,7 @@ table {
   height: 250px;
   border: 2px solid slateblue;
   border-collapse: collapse;
+  
   margin: 0 auto;
 } 
 #title {
@@ -10,16 +11,22 @@ table {
 }
 tr {
   border: 2px solid slateblue;
-  margin: 5px;
-} td {
   text-align: center;
+  margin: 5px;
+}
+tr:nth-child(2n+1) {
+  background-color: rgb(240, 240, 240);
+}
+tr:nth-child(2n) {
+  background-color: rgb(240, 250, 255);
 }
 
+/* mainBtn Start */
 .mainBtn {
+  display: flex;
+  width: 1000px;
   text-align: center;
-}
-.main:hover {
-  background-color:gray;
+  margin: 0 auto;
 }
 .addBtn {
   font-size: 20px;
@@ -31,35 +38,47 @@ tr {
   border-radius:10px;
   border-color: slateblue;
 }
+.addBtn:hover {
+  background-color: steelblue;
+}
 .apptestBtn {
   font-size: 20px;
   color: white;
-  background-color: darkseagreen;
+  background-color: mediumseagreen;
   
   width: 495px;
   height: 40px;
   margin: 5px;
   border-radius:10px;
-  border-color: slateblue;
+  border-color: steelblue;
 }
+.apptestBtn:hover {
+  background-color: seagreen;
+}
+/* mainBtn End */
 
 .actionBtn {
   padding: 0px 7px;
   margin-right: 10px;
+  border: 1px solid slateblue;
+  border-radius: 4px; 
 }
 #testBtn {
   background-color: yellow;
-  border: 1px solid gray;
-  border-radius: 4px;
   padding-top: 2.5px;
+}
+#testBtn:hover {
+  background-color: gold;
 }
 #updateBtn {
   background-color: rgb(30, 172, 30);
-  border: 1px solid gray;
-  border-radius: 4px;
+}
+#updateBtn:hover {
+  background-color: Forestgreen;
 }
 #deleteBtn {
   background-color: red;
-  border: 1px solid gray;
-  border-radius: 4px;
+}
+#deleteBtn:hover {
+  background-color: Firebrick;
 }
