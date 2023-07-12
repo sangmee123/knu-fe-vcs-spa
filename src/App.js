@@ -18,6 +18,7 @@ function App() {
         try {
           const response = await axios.get('http://localhost:8080/vercontrol/getConfigAll');
           setData(response.data);
+          console.log(response.data);
         } catch(e) {
           console.log(e);
         }
@@ -31,8 +32,13 @@ function App() {
     for(let i = 0; i < data.length; i++) {
       arr.push(
         <tr className="list">
-          <td>{data[i].id}</td><td>{data[i].os}</td><td>{data[i].ver}</td><td>{data[i].updateType}</td>
-          <td>{data[i].message}</td><td>{data[i].package}</td><td>{data[i].regdate}</td>
+          <td>{data[i].id}</td>
+          <td>{data[i].os}</td>
+          <td>{data[i].ver}</td>
+          <td>{(data[i].updatetype === 1) ? 'true': 'false' }</td>
+          <td>{data[i].message}</td>
+          <td>{data[i].packageInfo}</td>
+          <td>{data[i].regdate}</td>
           <td className="btnList">
             <TestButton />
             <UpdateButton />
