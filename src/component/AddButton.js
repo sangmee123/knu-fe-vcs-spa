@@ -36,17 +36,19 @@ function AddButton() {
         <div>
             <button className="addBtn" variant="outline-primary" onClick={handleShow}>ADD</button>
             <Modal show={show} onHide={handleClose}>
+                <form>
                     <Modal.Header></Modal.Header>
-                    <form className='inputBox'>
+                    <div className='inputBox'>
                         <SelectOs />
                         <input class="textBox"></input>
                         <SelectUpdatetype />
                         <textarea class="textBox" id="msg"></textarea>
-                    </form>
+                    </div>
                     <Modal.Footer>
-                        <Button className="closeBtn" variant="secondary" onClick={handleClose}>취소</Button>
-                        <Button type="submit" className="closeBtn" variant="secondary" onClick={handleClose}>확인</Button>
+                        <Button className="closeBtn" onClick={handleClose}>취소</Button>
+                        <Button type="submit" className="closeBtn" onClick={handleClose}>확인</Button>
                     </Modal.Footer>
+                </form>
             </Modal>
         </div>
     )
