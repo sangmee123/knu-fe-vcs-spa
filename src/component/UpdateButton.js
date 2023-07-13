@@ -32,12 +32,12 @@ function UpdateButton(props) {
 
     const [show, setShow] = useState(false);
 
-    const [os, setOs] = useState("");
-    const [ver, setVer] = useState("");
-    const [updatetype, setUpdatetype] = useState("");
-    const [message, setMessage] = useState("");
+    const [os, setOs] = useState(props.data.os);
+    const [ver, setVer] = useState(props.data.ver);
+    const [updatetype, setUpdatetype] = useState(props.data.updatetype);
+    const [message, setMessage] = useState(props.data.message);
 
-    const handleClose = () => setShow(false);
+    const handleClose = () => {setShow(false);}
     const handleShow = () => setShow(true);
     const selectedOs = (e) => {
         setOs(e.target.value);
@@ -85,30 +85,30 @@ function UpdateButton(props) {
 
     const SelectOs = () => {
         return (
-            <select onChange={selectedOs} defaultValue={props.data.os}>
+            <select onChange={selectedOs} value={os}>
                 <option value='android'>{'android'}</option>
                 <option value='ios'>{'ios'}</option>
             </select>
         );
     };
-    const Version = () => {
-        return (
-            <input type="text" onChange={selectedVer} className="textBox" defaultValue={props.data.ver}></input>
-        );
-    };
+    // const Version = () => {
+    //     return (
+    //         <input type="text" onChange={selectedVer} className="textBox" value={ver}/>
+    //     );
+    // };
     const SelectUpdatetype = () => {
         return (
-            <select onChange={selectedUpdatetype} defaultValue={props.data.updatetype}>                
+            <select onChange={selectedUpdatetype} value={updatetype}>                
                 <option value="0">{'false'}</option>
                 <option value="1">{'true'}</option>
             </select>
         );
     };
-    const Message = () => {
-        return (
-            <textarea className="textBox"  onChange={selectedMessage} id="msg">{props.data.message}</textarea>
-        );
-    };
+    // const Message = () => {
+    //     return (
+    //         <textarea className="textBox" onChange={selectedMessage} value={message} id="msg"></textarea>
+    //     );
+    // };
 
     return(
         <>
@@ -118,9 +118,9 @@ function UpdateButton(props) {
                     <Modal.Header></Modal.Header>
                     <div className='inputBox'>
                         <SelectOs />
-                        <Version />
+                        <input type="text" onChange={selectedVer} className="textBox" value={ver}/>
                         <SelectUpdatetype />
-                        <Message />
+                        <textarea className="textBox" onChange={selectedMessage} value={message} id="msg"/>
                     </div>
                     <Modal.Footer>
                         <Button className="closeBtn" onClick={handleClose}>취소</Button>
