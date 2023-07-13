@@ -54,7 +54,7 @@ function DeleteButton() {
     };
     const Message = () => {
         return (
-            <textarea className="textBox" id="msg" value={data[4].message}></textarea>
+            <textarea className="textBox" id="msg" value={(data[4].message) === '' ? 'null': data[4].message}></textarea>
         );
     };
 

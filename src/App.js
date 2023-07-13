@@ -36,7 +36,7 @@ function App() {
           <td>{data[i].os}</td>
           <td>{data[i].ver}</td>
           <td>{(data[i].updatetype === 1) ? 'true': 'false' }</td>
-          <td>{data[i].message}</td>
+          <td>{(data[i].message) === '' ? 'null' : (data[4].message)}</td>
           <td>{data[i].packageInfo}</td>
           <td>{data[i].regdate}</td>
           <td className="btnList">
