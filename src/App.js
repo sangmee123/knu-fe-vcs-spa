@@ -3,11 +3,13 @@ import './App.css';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 
+
 import AppTestButton from './component/AppTestButton';
 import TestButton from './component/TestButton';
 import UpdateButton from './component/UpdateButton';
 import DeleteButton from './component/DeleteButton';
 import AddButton from './component/AddButton';
+
 
 function App() {
   const [data, setData]= useState('');
@@ -16,7 +18,7 @@ function App() {
   useEffect(() => {
     const getConfigData = async () => {
         try {
-          const response = await axios.get('http://ec2-13-211-88-63.ap-southeast-2.compute.amazonaws.com:8080');
+          const response = await axios.get('http://ec2-13-211-88-63.ap-southeast-2.compute.amazonaws.com:8080/vercontrol/getConfigAll');
           setData(response.data);
           console.log(response.data);
         } catch(e) {
