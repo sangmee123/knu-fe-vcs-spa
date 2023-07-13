@@ -13,19 +13,17 @@ function DeleteButton({ onRemove }) {
 
     const [data, setData]= useState('');
 
-    // ajax, jquery 형태의 서버 통신 
-    // useEffect(() => {
-    //     const getConfigData = async () => {
-    //         try {
-    //         const response = await axios.get('http://ec2-13-211-88-63.ap-southeast-2.compute.amazonaws.com:8080/vercontrol/getConfigAll');
-    //         setData(response.data);
-    //         console.log(response.data);
-    //         } catch(e) {
-    //         console.log(e);
-    //         }
-    //     };
-    //     getConfigData();
-    // }, []); 
+    useEffect(() => {
+        const getConfigData = async () => {
+            try {
+            const response = await axios.get('http://ec2-13-211-88-63.ap-southeast-2.compute.amazonaws.com:8080/vercontrol/getConfigAll');
+            setData(response.data);
+            } catch(e) {
+            //console.log(e);
+            }
+        };
+        getConfigData();
+    }, []); 
 
 
     const [show, setShow] = useState(false);
