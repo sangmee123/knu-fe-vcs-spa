@@ -19,7 +19,7 @@ function UpdateButton() {
     useEffect(() => {
         const getConfigData = async () => {
             try {
-            const response = await axios.get('http://ec2-13-211-88-63.ap-southeast-2.compute.amazonaws.com:8080/');
+            const response = await axios.get('http://ec2-13-211-88-63.ap-southeast-2.compute.amazonaws.com:8080/vercontrol/getConfigAll');
             idx = response.data.id;
             setData(response.data);
             console.log(response.data);
