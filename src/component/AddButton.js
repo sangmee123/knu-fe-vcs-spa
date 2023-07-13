@@ -13,10 +13,6 @@ function AddButton() {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
-  const [posts, setPosts] = useState({
-    
-  });
-
   const newData = {
     "os": "123",
     "ver": "123",
@@ -33,9 +29,8 @@ function AddButton() {
           newData(response),
           {}
         );
-        console.log("data=" + response);
       } catch (e) {
-        console.log(e);
+        //console.log(e);
       }
     };
     getConfigData();
