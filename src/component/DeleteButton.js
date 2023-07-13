@@ -13,7 +13,6 @@ function DeleteButton({ onRemove }) {
 
     const [data, setData]= useState('');
 
-    // ajax, jquery 형태의 서버 통신 
     useEffect(() => {
         const getConfigData = async () => {
             try {

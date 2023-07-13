@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from "react";
-import axios from "axios";
+import React, { useState, useRef } from "react";
 
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import "bootstrap/dist/css/bootstrap.min.css";
+import { useMutation } from "react-query";
+import { addVersion } from "./AddApi";
 
 import "../styles/CommonPopup.css";
 
@@ -13,48 +14,107 @@ function AddButton() {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
+  const [data, setData] = useState("");
+
+  const [os, setOs] = useState("");
+  const [ver, setVer] = useState("");
+  const [updatetype, setUpdatetype] = useState(0);
+  const [message, setMessage] = useState("");
+  const [packageInfo, setPackageInfo] = useState("");
+
   const newData = {
-    "os": "123",
-    "ver": "123",
-    "updatetype": 0,
-    "message": "test",
-    "packageInfo": "test"
+    os: os,
+    ver: ver,
+    updatetype: Number(updatetype),
+    message: message,
+    packageInfo: packageInfo,
   };
 
-  useEffect(() => {
-    const getConfigData = async () => {
-      try {
-        const response = await axios.post(
-          `http://ec2-13-211-88-63.ap-southeast-2.compute.amazonaws.com:8080/vercontrol/save`,
-          newData(response),
-          {}
-        );
-      } catch (e) {
-        //console.log(e);
-      }
-    };
-    getConfigData();
-  }, []);
+  const osRef = useRef(null);
+  const verRef = useRef(null);
+  const updatetypeRef = useRef(null);
+  const messageRef = useRef(null);
+  const packageInfoRef = useRef(null);
+
+  const { mutate: version } = useMutation(addVersion, {
+    onSuccess: (response) => {
+      console.log("response");
+      console.log(response);
+
+      setData(response);
+    },
+    onError: () => {
+      console.log("error");
+    },
+  });
+
+  function submitNewData() {
+    if (os === "") {
+      alert("버전을 입력해주세요.");
+      return;
+    }
+
+    if (ver === "") {
+      alert("버전을 입력해주세요.");
+      return;
+    }
+
+    if (updatetype === "") {
+      alert("업데이트 타입을 입력해주세요.");
+      return;
+    }
+
+    if (message === "") {
+      alert("메세지를 입력해주세요.");
+      return;
+    }
+
+    if (packageInfo === "") {
+      alert("패키지 인포를 입력해주세요.");
+      return;
+    }
+
+    if (os && ver && updatetype && message && packageInfo) {
+      // API 호출
+      version(newData);
+    }
+  }
+
+  const handleOsChange = (event) => {
+    setOs(event.target.value);
+  };
+
+  const handleVerChange = (event) => {
+    setVer(event.target.value);
+  };
+
+  const handleUpdatetypeChange = (event) => {
+    if (event.target.value === "false") {
+      setUpdatetype(1);
+    }
+  };
+
+  const handleMessageChange = (event) => {
+    setMessage(event.target.value);
+  };
+
+  const handlePackageInfoChange = (event) => {
+    setPackageInfo(event.target.value);
+  };
+
+  
 
   const handleSubmit = () => {
-    /* ajax, jquery 형태의 서버 통신 */
-    // useEffect(() => {
-    //     axios
-    //     .post("http://localhost:8080/vercontrol/save", addData)
-    //     .then((response) => {
-    //         console.log("성공", response.data);
-    //     })
-    //     .catch((error) => console.log(error.response));
-    //     getConfigData();
-    // }, []);
   };
 
   const SelectOs = () => {
     return (
-      <select>
+      <select value={os} ref={osRef} onChange={handleOsChange}>
         <option value="none" hidden></option>
-        <option key="os" value="android">android</option>
-        <option key="os" value="ios">
+        <option key="android" value="android">
+          android
+        </option>
+        <option key="ios" value="ios">
           ios
         </option>
       </select>
@@ -63,12 +123,16 @@ function AddButton() {
 
   const SelectUpdatetype = () => {
     return (
-      <select>
+      <select
+        value={updatetype}
+        ref={updatetypeRef}
+        onChange={handleUpdatetypeChange}
+      >
         <option value="none" hidden></option>
-        <option key="updatetype" value="true">
+        <option key="true" value="true">
           true
         </option>
-        <option key="updatetype" value="false">
+        <option key="false" value="false">
           false
         </option>
       </select>
@@ -81,19 +145,37 @@ function AddButton() {
         ADD
       </button>
       <Modal show={show} onHide={handleClose}>
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={submitNewData}>
           <Modal.Header></Modal.Header>
           <div className="inputBox">
             <SelectOs />
-            <input class="textBox"></input>
+            <input
+              className="textBox"
+              value={ver}
+              ref={verRef}
+              onChange={handleVerChange}
+            ></input>
             <SelectUpdatetype />
-            <textarea key="message" class="textBox" id="msg"></textarea>
+            <textarea
+              key="message"
+              className="textBox"
+              id="msg"
+              ref={messageRef}
+              value={message}
+              onChange={handleMessageChange}
+            ></textarea>
+            <input
+              className="textBox"
+              value={packageInfo}
+              ref={packageInfoRef}
+              onChange={handlePackageInfoChange}
+            ></input>
           </div>
           <Modal.Footer>
             <Button className="closeBtn" onClick={handleClose}>
               취소
             </Button>
-            <Button type="submit" className="closeBtn" onClick={handleClose}>
+            <Button type="submit" className="closeBtn" onClick={submitNewData}>
               확인
             </Button>
           </Modal.Footer>
