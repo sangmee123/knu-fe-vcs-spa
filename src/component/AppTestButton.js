@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import { useEffect, useState } from 'react';
+import axios from 'axios';
 
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
@@ -15,12 +16,35 @@ function AppTestButton() {
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
+    const [data, setData]= useState('');
+
+    // ajax, jquery 형태의 서버 통신 
+    useEffect(() => {
+        const getConfigData = async () => {
+            try {
+            const response = await axios.get('http://ec2-13-211-88-63.ap-southeast-2.compute.amazonaws.com:8080/vercontrol/getConfigAll');
+            setData(response.data);
+            console.log(response.data);
+            } catch(e) {
+            console.log(e);
+            }
+        };
+        getConfigData();
+    }, []); 
+    
+    function versionList(data) {
+        let arr = [];
+
+        for(let i = 0; i < data.length; i++) {
+            arr.push(<option key="ver">{data[i].os}-{data[i].ver}</option>);
+        }
+        return arr;
+    }
+
     const SelectBox = () => {
         return (
             <select>
-                <option key="total" value="idx1">1-ios-1.0</option>
-                <option key="total" value="idx2">2-android-1.0</option>
-                <option key="total" value="idx3">3-android-1.5</option>
+                {versionList(data)}
             </select>
         );
     };
