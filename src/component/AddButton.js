@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import axios from 'axios';
+
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -7,10 +9,33 @@ import '../styles/CommonPopup.css';
 
 function AddButton() {
 
+    /* ADD 데이터 Submit */
     const [show, setShow] = useState(false);
-
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
+
+    const [data, setData]= useState('');
+
+    // const addData = {
+    //     "os": os,
+    //     "ver": ver,
+    //     "updatetype": updatetype,
+    //     "message": message,
+    // };
+
+    const handleSubmit = () => {
+        /* ajax, jquery 형태의 서버 통신 */
+        // useEffect(() => {
+        //     axios
+        //     .post("http://localhost:8080/vercontrol/save", addData)
+        //     .then((response) => {
+        //         console.log("성공", response.data);
+
+        //     })
+        //     .catch((error) => console.log(error.response));
+        //     getConfigData();
+        // }, []); 
+    }
 
     const SelectOs = () => {
         return (
@@ -26,8 +51,8 @@ function AddButton() {
         return (
             <select>                
                 <option value="none" hidden></option>
-                <option key="idx1" value="idx1">true</option>
-                <option key="idx2" value="idx2">false</option>
+                <option key="updatetype" value="true">true</option>
+                <option key="updatetype" value="false">false</option>
             </select>
         );
     };
@@ -36,13 +61,13 @@ function AddButton() {
         <div>
             <button className="addBtn" variant="outline-primary" onClick={handleShow}>ADD</button>
             <Modal show={show} onHide={handleClose}>
-                <form>
+                <form onSubmit={handleSubmit}>
                     <Modal.Header></Modal.Header>
                     <div className='inputBox'>
                         <SelectOs />
                         <input class="textBox"></input>
                         <SelectUpdatetype />
-                        <textarea class="textBox" id="msg"></textarea>
+                        <textarea key="message" class="textBox" id="msg"></textarea>
                     </div>
                     <Modal.Footer>
                         <Button className="closeBtn" onClick={handleClose}>취소</Button>

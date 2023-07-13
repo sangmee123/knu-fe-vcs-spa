@@ -9,7 +9,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import '../styles/CommonPopup.css'; 
 import '../styles/ActionButton.css';
 
-function DeleteButton() {
+function DeleteButton({ onRemove }) {
 
     const [data, setData]= useState('');
 
@@ -17,7 +17,7 @@ function DeleteButton() {
     useEffect(() => {
         const getConfigData = async () => {
             try {
-            const response = await axios.get('http://localhost:8080/vercontrol/getConfigAll');
+            const response = await axios.get('http://ec2-13-211-88-63.ap-southeast-2.compute.amazonaws.com:8080');
             setData(response.data);
             console.log(response.data);
             } catch(e) {
@@ -57,7 +57,7 @@ function DeleteButton() {
             <textarea className="textBox" id="msg" value={(data[4].message) === '' ? 'null': data[4].message}></textarea>
         );
     };
-
+    
     return(
         <>
             <button className="actionBtn" id="deleteBtn" variant="outline-primary" onClick={handleShow}>삭제</button>

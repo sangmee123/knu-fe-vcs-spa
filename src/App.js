@@ -16,7 +16,7 @@ function App() {
   useEffect(() => {
     const getConfigData = async () => {
         try {
-          const response = await axios.get('http://localhost:8080/vercontrol/getConfigAll');
+          const response = await axios.get('http://ec2-13-211-88-63.ap-southeast-2.compute.amazonaws.com:8080');
           setData(response.data);
           console.log(response.data);
         } catch(e) {
@@ -25,6 +25,13 @@ function App() {
     };
     getConfigData();
   }, []); 
+
+    /* 삭제 기능 */
+    const onRemove = id => {
+      // data.id 가 파라미터로 일치하지 않는 원소만 추출해서 새로운 배열을 만듬
+      // = data.id 가 id 인 것을 제거함
+      setData(data.filter(data => data.id !== id));
+  };
 
   function versionList(data) {
     let arr = [];
@@ -36,13 +43,13 @@ function App() {
           <td>{data[i].os}</td>
           <td>{data[i].ver}</td>
           <td>{(data[i].updatetype === 1) ? 'true': 'false' }</td>
-          <td>{(data[i].message) === '' ? 'null' : (data[4].message)}</td>
+          <td>{(data[i].message) === '' ? 'null' : (data[i].message)}</td>
           <td>{data[i].packageInfo}</td>
           <td>{data[i].regdate}</td>
           <td className="btnList">
             <TestButton />
             <UpdateButton />
-            <DeleteButton />
+            <DeleteButton onRemove={onRemove}/>
           </td>
         </tr>
       )
