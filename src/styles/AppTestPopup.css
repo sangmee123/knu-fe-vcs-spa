@@ -35,10 +35,10 @@ select {
     padding: 5px;
 }
 #msg {
-    overflow-y: auto;
     height: 100px;
     font-size: 13px;
     font-weight: bolder; 
+    overflow-y: auto;
 }
 
 /* 팝업창 닫기 버튼 */
