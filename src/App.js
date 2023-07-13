@@ -16,7 +16,7 @@ function App() {
   useEffect(() => {
     const getConfigData = async () => {
         try {
-          const response = await axios.get('http://localhost:8080/vercontrol/getConfigAll');
+          const response = await axios.get('');
           setData(response.data);
           console.log(response.data);
         } catch(e) {

@@ -1,0 +1,38 @@
+.modal-content {
+    background-color: cornflowerblue;
+    width: 360px;
+    height: 370px;
+    margin: 0 auto;
+}.modal-footer {
+    border: none;
+}
+.inputBox {
+    width: 240px;
+    margin: 0 auto;
+}
+
+/* 팝업창 입력란 */
+.textBox {
+    background-color: white;
+    width: 100%;
+    text-align: center;
+    font-size: 17px;
+    font-weight: bold;
+    border: 1px solid gray;
+    padding: 5px;
+}
+#msg {
+    overflow-y: auto;
+    height: 200px;
+    font-size: 13px;
+    font-weight: bolder; 
+}
+
+/* 팝업창 닫기 버튼 */
+.closeBtn {
+    background-color: rgb(19, 167, 19);
+    color: black;
+    padding: 2px 15px;
+    border-color: rgb(71, 99, 175);
+    margin-right: 25px;
+}

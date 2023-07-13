@@ -6,6 +6,7 @@ import Modal from 'react-bootstrap/Modal';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 import '../styles/AppTestButton.css';
+import '../styles/AppTestPopup.css';
 
 function AppTestButton() {
 
@@ -17,10 +18,16 @@ function AppTestButton() {
     const SelectBox = () => {
         return (
             <select>
-                <option key="idx1" value="idx1">1-ios-1.0</option>
-                <option key="idx2" value="idx2">2-android-1.0</option>
-                <option key="idx3" value="idx3">3-android-1.5</option>
+                <option key="total" value="idx1">1-ios-1.0</option>
+                <option key="total" value="idx2">2-android-1.0</option>
+                <option key="total" value="idx3">3-android-1.5</option>
             </select>
+        );
+    };
+
+    const Message = () => {
+        return (
+            <textarea className="textBox" id="msg"></textarea>
         );
     };
 
@@ -29,16 +36,19 @@ function AppTestButton() {
             <button className="apptestBtn" variant="outline-primary" onClick={handleShow}>App Test</button>
 
             <Modal show={show} onHide={handleClose}>
-                <Modal.Header>
-                    <Modal.Title>Client Ver</Modal.Title>
-                </Modal.Header>
-                <SelectBox />
-                <Modal.Header>
-                <Modal.Title>Server Result</Modal.Title>
-                </Modal.Header>
-                <Modal.Footer>
-                    <Button className="closeBtn" variant="secondary" onClick={handleClose}>확인</Button>
-                </Modal.Footer>
+                <form>
+                    <Modal.Header>Client Ver</Modal.Header>
+                    <div className="inputBox">
+                        <SelectBox />
+                        </div>
+                    <Modal.Header>Client Ver</Modal.Header>
+                    <div className="inputBox">
+                        <Message />
+                    </div>
+                    <Modal.Footer>
+                        <Button className="closeBtn" onClick={handleClose}>확인</Button>
+                    </Modal.Footer>
+                </form>
             </Modal>
         </div>
     )
