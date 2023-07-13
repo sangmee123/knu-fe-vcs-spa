@@ -9,6 +9,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import '../styles/AppTestButton.css';
 import '../styles/AppTestPopup.css';
 
+var idx = 0;
+
 function AppTestButton() {
 
     const [show, setShow] = useState(false);
@@ -36,22 +38,30 @@ function AppTestButton() {
         let arr = [];
 
         for(let i = 0; i < data.length; i++) {
-            arr.push(<option key="ver">{data[i].os}-{data[i].ver}</option>);
+            arr.push(<option key="ver">{data[i].id}-{data[i].os}-{data[i].ver}</option>);
         }
+
         return arr;
     }
 
     const SelectBox = () => {
+        const handleChange = (e) => {
+            // event handler
+            idx = Math.floor(e.target.value[0]-1);
+            console.log(e.target.value);
+            console.log(idx);
+        };
+
         return (
-            <select>
-                {versionList(data)}
+            <select onChange={handleChange}>
+                {versionList(data)};
             </select>
         );
     };
 
     const Message = () => {
         return (
-            <textarea className="textBox" id="msg"></textarea>
+            <div className="textBox" id="msg">{"[{os:"} {data[idx].os} {"},{ver:"}{data[idx].ver}{"},…]"}</div>
         );
     };
 
@@ -60,19 +70,17 @@ function AppTestButton() {
             <button className="apptestBtn" variant="outline-primary" onClick={handleShow}>App Test</button>
 
             <Modal show={show} onHide={handleClose}>
-                <form>
                     <Modal.Header>Client Ver</Modal.Header>
                     <div className="inputBox">
                         <SelectBox />
                         </div>
-                    <Modal.Header>Client Ver</Modal.Header>
+                    <Modal.Header>Server Result</Modal.Header>
                     <div className="inputBox">
                         <Message />
                     </div>
                     <Modal.Footer>
                         <Button className="closeBtn" onClick={handleClose}>확인</Button>
                     </Modal.Footer>
-                </form>
             </Modal>
         </div>
     )
