@@ -14,7 +14,11 @@ function AppTestButton() {
 
     const [show, setShow] = useState(false);
 
-    const handleClose = () => setShow(false);
+    const handleClose = () => {
+        setShow(false);
+        setSelected("");
+        setResult("");
+    };
     const handleShow = () => setShow(true);
 
     /* ajax, jquery 형태의 서버 통신 - 전체 OS 버전 리스트 출력 */
@@ -41,20 +45,29 @@ function AppTestButton() {
     }
 
     const [selected, setSelected] = useState("");
-    
+    const [result, setResult] = useState([]);
     let idx = 0;
     let input = {};
     const handleSelect = (e) => {
         setSelected(e.target.value);
         idx = e.target.value;
-        input = {
-            "os": data[idx].os,
-            "ver": data[idx].ver,
-            "updatetype": data[idx].updatetype,
-            "message": data[idx].message,
-            "packageInfo": data[idx].packageInfo
-            };
-            console.log(input);
+        console.log(input);
+        axios(
+            {
+                //url: 'http://ec2-13-211-88-63.ap-southeast-2.compute.amazonaws.com:8080/vercontrol/getConfig/'+idx,
+                url: 'http://localhost:8080/vercontrol/getConfig/'+idx,
+                method: 'get',
+                headers: {
+                    'Content-Type': 'application/json'
+                    }
+                }
+            ).then(function (response) {
+                setResult(response.data);
+                console.log(response.data);
+                console.log(response.data.ver);
+            });
+
+        
     }
 
     const SelectBox = () => {
@@ -65,28 +78,15 @@ function AppTestButton() {
         );
     };
 
-    /* ajax, jquery 형태의 서버 통신 - App Test에서 선택한 버전 POST */
-    const [version, setVersion]= useState('');
 
-    useEffect(() => {
-        const postConfigData = async () => {
-          try {
-            const response = await axios.post(
-              `http://ec2-13-211-88-63.ap-southeast-2.compute.amazonaws.com:8080/vercontrol/getConfig/${idx}`,
-              input,
-              setVersion(response.data),
-              {}
-            );
-          } catch (e) {
-            //console.log(e);
-          }
-        };
-        postConfigData();
-      }, []);
-
+    var check = false;
     const Message = () => {
+        console.log(result);
+        
+        (result.ver == null) ? check = false : check = true;
+
         return (
-            <div className="textBox" id="msg">{version[idx]}</div>
+            <div className="textBox" id="msg">{ check ? "ver :" + result.ver + " updatetype : " + result.updatetype : "버전을 선택해주세요."}</div>
         );
     };
 
@@ -101,11 +101,11 @@ function AppTestButton() {
                         <SelectBox />
                         </div>
                     <Modal.Header>Client Ver</Modal.Header>
-                    <div className="inputBox">
+                    <div className="inputBox" value = {result}>
                         <Message />
                     </div>
                     <Modal.Footer>
-                        <Button className="closeBtn" onChange={handleSelect}>확인</Button>
+                        <Button className="closeBtn" onClick={handleClose}>확인</Button>
                     </Modal.Footer>
                 </form>
             </Modal>
