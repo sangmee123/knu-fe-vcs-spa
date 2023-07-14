@@ -49,7 +49,7 @@ function App() {
           <td>{data[i].regdate}</td>
           <td className="btnList">
             <TestButton />
-            <UpdateButton />
+            <UpdateButton data = {data[i]} />
             <DeleteButton onRemove={onRemove}/>
           </td>
         </tr>
