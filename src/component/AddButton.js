@@ -11,14 +11,21 @@ import "../styles/CommonPopup.css";
 function AddButton() {
   /* ADD 데이터 Submit */
   const [show, setShow] = useState(false);
-  const handleClose = () => setShow(false);
+  const handleClose = () => {
+    setShow(false);
+    setOs("");
+    setVer("");
+    setUpdatetype("");
+    setMessage("");
+    setPackageInfo("");
+  }
   const handleShow = () => setShow(true);
 
   const [data, setData] = useState("");
 
   const [os, setOs] = useState("");
   const [ver, setVer] = useState("");
-  const [updatetype, setUpdatetype] = useState(0);
+  const [updatetype, setUpdatetype] = useState("");
   const [message, setMessage] = useState("");
   const [packageInfo, setPackageInfo] = useState("");
 
@@ -49,32 +56,37 @@ function AddButton() {
   });
 
   function submitNewData() {
-    if (os === "") {
-      alert("버전을 입력해주세요.");
-      return;
-    }
+    // if (os === "") {
+    //   alert("os을 입력해주세요.");
+    //   return;
+    // }
 
-    if (ver === "") {
-      alert("버전을 입력해주세요.");
-      return;
-    }
+    // if (ver === "") {
+    //   alert("버전을 입력해주세요.");
+    //   return;
+    // }
 
-    if (updatetype === "") {
-      alert("업데이트 타입을 입력해주세요.");
-      return;
-    }
+    // if (updatetype === "") {
+    //   alert("업데이트 타입을 입력해주세요.");
+    //   return;
+    // }
 
-    if (message === "") {
-      alert("메세지를 입력해주세요.");
-      return;
-    }
+    // if (message === "") {
+    //   alert("메세지를 입력해주세요.");
+    //   return;
+    // }
 
-    if (packageInfo === "") {
-      alert("패키지 인포를 입력해주세요.");
-      return;
-    }
+    // if (packageInfo === "") {
+    //   alert("패키지 인포를 입력해주세요.");
+    //   return;
+    // }
 
     if (os && ver && updatetype && message && packageInfo) {
+      setOs("");
+    setVer("");
+    setUpdatetype("");
+    setMessage("");
+    setPackageInfo("");
       // API 호출
       version(newData);
     }
@@ -89,9 +101,7 @@ function AddButton() {
   };
 
   const handleUpdatetypeChange = (event) => {
-    if (event.target.value === "false") {
-      setUpdatetype(1);
-    }
+      setUpdatetype(event.target.value);
   };
 
   const handleMessageChange = (event) => {
@@ -129,12 +139,8 @@ function AddButton() {
         onChange={handleUpdatetypeChange}
       >
         <option value="none" hidden></option>
-        <option key="true" value="true">
-          true
-        </option>
-        <option key="false" value="false">
-          false
-        </option>
+        <option value="0">{'false'}</option>
+        <option value="1">{'true'}</option>
       </select>
     );
   };

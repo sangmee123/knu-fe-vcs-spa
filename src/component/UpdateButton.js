@@ -12,24 +12,6 @@ import '../styles/ActionButton.css';
 
 function UpdateButton(props) {
 
-    //const [data, setData]= useState('');
-
-    // ajax, jquery 형태의 서버 통신 
-    //let idx = 0;
-    // useEffect(() => {
-    //     const getConfigData = async () => {
-    //         try {
-    //         const response = await axios.get('http://ec2-13-211-88-63.ap-southeast-2.compute.amazonaws.com:8080//vercontrol/getConfig/{id}');
-    //         idx = response.data.id;
-    //         setData(response.data);
-    //         console.log(response.data);
-    //         } catch(e) {
-    //         console.log(e);
-    //         }
-    //     };
-    //     getConfigData();
-    // }, []); 
-
     const [show, setShow] = useState(false);
 
     const [os, setOs] = useState(props.data.os);
@@ -61,7 +43,6 @@ function UpdateButton(props) {
         var id = props.data.id;
         axios(
             {
-                //url: 'http://ec2-13-211-88-63.ap-southeast-2.compute.amazonaws.com:8080/vercontrol/getConfig/'+idx,
                 url: 'http://ec2-13-211-88-63.ap-southeast-2.compute.amazonaws.com:8080/vercontrol/getConfig/' + id,
                 method: 'put',
                 data: {
@@ -91,11 +72,6 @@ function UpdateButton(props) {
             </select>
         );
     };
-    // const Version = () => {
-    //     return (
-    //         <input type="text" onChange={selectedVer} className="textBox" value={ver}/>
-    //     );
-    // };
     const SelectUpdatetype = () => {
         return (
             <select onChange={selectedUpdatetype} value={updatetype}>                
@@ -104,11 +80,6 @@ function UpdateButton(props) {
             </select>
         );
     };
-    // const Message = () => {
-    //     return (
-    //         <textarea className="textBox" onChange={selectedMessage} value={message} id="msg"></textarea>
-    //     );
-    // };
 
     return(
         <>

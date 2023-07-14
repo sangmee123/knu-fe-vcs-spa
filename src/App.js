@@ -50,7 +50,8 @@ function App() {
           <td className="btnList">
             <TestButton />
             <UpdateButton data = {data[i]} />
-            <DeleteButton onRemove={onRemove}/>
+            <DeleteButton data = {data[i]}/> 
+            {/* <DeleteButton onRemove={onRemove}/> */}
           </td>
         </tr>
       )
@@ -67,11 +68,11 @@ function App() {
       
       <table>
         <tr id="title">
-          <th>idx</th><th>os</th><th>ver</th><th>updatetype</th>
-          <th>message</th><th>package</th><th>regdate</th><th>action</th>
+          <th>id</th><th>os</th><th>ver</th><th>updatetype</th>
+          <th>message</th><th>packageInfo</th><th>regdate</th><th>action</th>
         </tr>
         {versionList(data)}
- 
+
       </table>
     </div>
   );

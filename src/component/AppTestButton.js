@@ -54,8 +54,8 @@ function AppTestButton() {
         console.log(input);
         axios(
             {
-                //url: 'http://ec2-13-211-88-63.ap-southeast-2.compute.amazonaws.com:8080/vercontrol/getConfig/'+idx,
-                url: 'http://localhost:8080/vercontrol/getConfig/'+idx,
+                url: 'http://ec2-13-211-88-63.ap-southeast-2.compute.amazonaws.com:8080/vercontrol/getConfig/'+idx,
+                //url: 'http://localhost:8080/vercontrol/getConfig/'+idx,
                 method: 'get',
                 headers: {
                     'Content-Type': 'application/json'
