@@ -4,15 +4,15 @@
 ## :green_book:  목차
 <p align="center">
   
-- [팀원 소개 :curly_loop: 3주간 교육 내용 브리핑](#팀원-소개-&-3주간-교육-내용-브리핑)
+- [팀원 소개 & 3주간 교육 내용 브리핑](#팀원-소개와-3주간-교육-내용-브리핑)
 - [시퀀스 다이어그램](#시퀀스-다이어그램)
-- [API 문서](#API-문서)
-- [결과물의 ERD :curly_loop: 시스템 구조도](#결과물의-ERD-시스템-구조도)
+- [API 문서](#api-문서)
+- [결과물의 ERD & 시스템 구조도](#결과물의-erd와-시스템-구조도)
 - [브랜치 전략](#브랜치-전략)
 - [에러 및 해결](#에러-및-해결)
 - [시연 영상](#시연-영상)
 
-# 팀원 소개 :curly_loop: 3주간 교육 내용 브리핑
+# 팀원 소개와 3주간 교육 내용 브리핑
 <img width="960" alt="image" src="https://github.com/sangmee123/knu-fe-vcs-spa/assets/69633033/5e6db2c8-a8cc-41bd-9261-104bac10c5a9">
 
 # 시퀀스 다이어그램
@@ -23,7 +23,7 @@
 <p align="center"><img width="760" alt="스크린샷 2023-08-02 171832" src="https://github.com/sangmee123/knu-fe-vcs-spa/assets/69633033/0d0014da-cc3c-4a0c-b089-fae00f16816d">
 <img width="760" alt="스크린샷 2023-08-02 171836" src="https://github.com/sangmee123/knu-fe-vcs-spa/assets/69633033/4fdd69dc-5bdb-4e9a-9882-653078f08eb5"></p>
 
-# 결과물의 ERD :curly_loop: 시스템 구조도
+# 결과물의 ERD와 시스템 구조도
 <p align="center"><img width="480" alt="스크린샷 2023-08-02 171838" src="https://github.com/sangmee123/knu-fe-vcs-spa/assets/69633033/bbeae23e-98e6-4eb3-bfba-c1920366e61b">
 <img width="480" alt="스크린샷 2023-08-02 171842" src="https://github.com/sangmee123/knu-fe-vcs-spa/assets/69633033/63e96f01-de37-4817-a7ca-9cbfd80943c1"></p>
 
